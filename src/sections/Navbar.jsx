@@ -18,7 +18,9 @@ const Navbar = () => {
   const [showBurger, setShowBurger] = useState(true);
 
   useGSAP(() => {
-    gsap.set(navRef.current, { xPercent: 100 });
+    gsap.set(navRef.current, {
+      x: "100%",
+    });
 
     gsap.set([...linksRef.current, contactRef.current], {
       autoAlpha: 0,
@@ -28,8 +30,8 @@ const Navbar = () => {
     tl.current = gsap
       .timeline({ paused: true })
       .to(navRef.current, {
-        xPercent: 0,
-        duration: 1,
+        x: 0,
+        duration: 0.8,
         ease: "power3.out",
       })
       .to(
@@ -41,7 +43,7 @@ const Navbar = () => {
           duration: 0.5,
           ease: "power2.out",
         },
-        "<+0.2",
+        "-=0.4",
       )
       .to(
         contactRef.current,
@@ -51,7 +53,7 @@ const Navbar = () => {
           duration: 0.5,
           ease: "power2.out",
         },
-        "<+0.1",
+        "-=0.2",
       );
 
     iconTl.current = gsap
@@ -92,6 +94,14 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    document.body.style.overflow = isOpen ? "hidden" : "auto";
+
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [isOpen]);
+
   const toggleMenu = () => {
     if (isOpen) {
       tl.current.reverse();
@@ -106,11 +116,26 @@ const Navbar = () => {
 
   return (
     <>
+      {/* Menu */}
       <nav
         ref={navRef}
-        className="fixed top-0 left-0 z-50 flex flex-col w-full h-screen px-6 py-10 uppercase bg-black md:px-12 text-white/80 md:w-1/2 md:left-1/2"
+        className="
+          fixed top-0 right-0 z-50
+          flex flex-col
+          h-screen
+          w-full
+          px-6 py-10
+          bg-black
+          text-white/80
+          uppercase
+
+          md:w-1/2
+          md:px-12
+
+          backdrop-blur-xl
+        "
       >
-        {/* Center Links */}
+        {/* Links */}
         <div className="flex items-center flex-1">
           <div className="flex flex-col w-full text-5xl md:text-6xl lg:text-8xl gap-y-2">
             {["home", "services", "about", "work", "contact"].map(
@@ -132,10 +157,19 @@ const Navbar = () => {
           </div>
         </div>
 
-        {/* Bottom Contact */}
+        {/* Contact */}
         <div
           ref={contactRef}
-          className="flex flex-col justify-between gap-8 pt-10 border-t border-white/10 md:flex-row md:items-end"
+          className="
+            flex flex-col
+            gap-8
+            pt-10
+            border-t border-white/10
+
+            md:flex-row
+            md:items-end
+            md:justify-between
+          "
         >
           <div>
             <p className="mb-2 tracking-wider text-white/40">E-mail</p>
@@ -167,18 +201,32 @@ const Navbar = () => {
       {/* Burger */}
       <div
         onClick={toggleMenu}
-        className="fixed z-[60] flex items-center justify-center transition-all duration-300 bg-black rounded-full cursor-pointer w-14 h-14 md:w-20 md:h-20 top-4 right-4 md:right-10"
-        style={
-          showBurger
-            ? { clipPath: "circle(50% at 50% 50%)" }
-            : { clipPath: "circle(0% at 50% 50%)" }
-        }
+        className="
+          fixed z-[60]
+          flex items-center justify-center
+          bg-black
+          rounded-full
+          cursor-pointer
+          transition-all duration-300
+
+          w-14 h-14
+          md:w-20 md:h-20
+
+          top-4 right-4
+          md:right-10
+        "
+        style={{
+          clipPath: showBurger
+            ? "circle(50% at 50% 50%)"
+            : "circle(0% at 50% 50%)",
+        }}
       >
         <div className="flex flex-col gap-1">
           <span
             ref={topLineRef}
             className="block w-8 h-0.5 bg-white rounded-full origin-center"
           />
+
           <span
             ref={bottomLineRef}
             className="block w-8 h-0.5 bg-white rounded-full origin-center"
