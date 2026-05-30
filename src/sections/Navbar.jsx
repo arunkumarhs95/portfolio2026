@@ -10,13 +10,17 @@ const Navbar = () => {
   const contactRef = useRef(null);
   const topLineRef = useRef(null);
   const bottomLineRef = useRef(null);
+
   const tl = useRef(null);
   const iconTl = useRef(null);
+
   const [isOpen, setIsOpen] = useState(false);
   const [showBurger, setShowBurger] = useState(true);
+
   useGSAP(() => {
     gsap.set(navRef.current, { xPercent: 100 });
-    gsap.set([linksRef.current, contactRef.current], {
+
+    gsap.set([...linksRef.current, contactRef.current], {
       autoAlpha: 0,
       x: -20,
     });
@@ -37,7 +41,7 @@ const Navbar = () => {
           duration: 0.5,
           ease: "power2.out",
         },
-        "<",
+        "<+0.2",
       )
       .to(
         contactRef.current,
@@ -47,7 +51,7 @@ const Navbar = () => {
           duration: 0.5,
           ease: "power2.out",
         },
-        "<+0.2",
+        "<+0.1",
       );
 
     iconTl.current = gsap
@@ -72,6 +76,7 @@ const Navbar = () => {
 
   useEffect(() => {
     let lastScrollY = window.scrollY;
+
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
 
@@ -79,9 +84,11 @@ const Navbar = () => {
 
       lastScrollY = currentScrollY;
     };
+
     window.addEventListener("scroll", handleScroll, {
       passive: true,
     });
+
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -93,76 +100,90 @@ const Navbar = () => {
       tl.current.play();
       iconTl.current.play();
     }
+
     setIsOpen(!isOpen);
   };
+
   return (
     <>
       <nav
         ref={navRef}
-        className="fixed z-50 flex flex-col justify-between w-full h-full px-10 uppercase bg-black text-white/80 py-28 gap-y-10 md:w-1/2 md:left-1/2"
+        className="fixed top-0 left-0 z-50 flex flex-col w-full h-screen px-6 py-10 uppercase bg-black md:px-12 text-white/80 md:w-1/2 md:left-1/2"
       >
-        <div className="flex flex-col text-5xl gap-y-2 md:text-6xl lg:text-8xl">
-          {["home", "services", "about", "work", "contact"].map(
-            (section, index) => (
-              <div key={index} ref={(el) => (linksRef.current[index] = el)}>
-                <Link
-                  className="transition-all duration-300 cursor-pointer hover:text-white"
-                  to={`${section}`}
-                  smooth
-                  offset={0}
-                  duration={2000}
-                >
-                  {section}
-                </Link>
-              </div>
-            ),
-          )}
+        {/* Center Links */}
+        <div className="flex items-center flex-1">
+          <div className="flex flex-col w-full text-5xl md:text-6xl lg:text-8xl gap-y-2">
+            {["home", "services", "about", "work", "contact"].map(
+              (section, index) => (
+                <div key={section} ref={(el) => (linksRef.current[index] = el)}>
+                  <Link
+                    to={section}
+                    smooth
+                    duration={1000}
+                    offset={0}
+                    onClick={toggleMenu}
+                    className="cursor-pointer transition-all duration-300 hover:text-white"
+                  >
+                    {section}
+                  </Link>
+                </div>
+              ),
+            )}
+          </div>
         </div>
+
+        {/* Bottom Contact */}
         <div
           ref={contactRef}
-          className="flex flex-col flex-wrap justify-between gap-8 md:flex-row"
+          className="flex flex-col justify-between gap-8 pt-10 border-t border-white/10 md:flex-row md:items-end"
         >
-          <div className="font-light">
-            <p className="tracking-wider text-white/50">E-mail</p>
-            <p className="text-xl tracking-widest lowercase text-pretty">
+          <div>
+            <p className="mb-2 tracking-wider text-white/40">E-mail</p>
+            <p className="text-base lowercase md:text-lg">
               arunkumarhs452@gmail.com
             </p>
           </div>
-          <div className="font-light">
-            <p className="tracking-wider text-white/50">Social Media</p>
-            <div className="flex flex-col flex-wrap md:flex-row gap-x-2">
+
+          <div>
+            <p className="mb-2 tracking-wider text-white/40">Social Media</p>
+
+            <div className="flex flex-wrap gap-3">
               {socials.map((social, index) => (
                 <a
                   key={index}
                   href={social.href}
-                  className="text-sm leading-loose tracking-widest uppercase hover:text-white transition-colors duration-300"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-sm tracking-wider transition-colors duration-300 hover:text-white"
                 >
-                  {"{ "}
                   {social.name}
-                  {" }"}
                 </a>
               ))}
             </div>
           </div>
         </div>
       </nav>
+
+      {/* Burger */}
       <div
-        className="fixed z-50 flex flex-col items-center justify-center gap-1 transition-all duration-300 bg-black rounded-full cursor-pointer w-14 h-14 md:w-20 md:h-20 top-4 right-10"
         onClick={toggleMenu}
+        className="fixed z-[60] flex items-center justify-center transition-all duration-300 bg-black rounded-full cursor-pointer w-14 h-14 md:w-20 md:h-20 top-4 right-4 md:right-10"
         style={
           showBurger
             ? { clipPath: "circle(50% at 50% 50%)" }
             : { clipPath: "circle(0% at 50% 50%)" }
         }
       >
-        <span
-          ref={topLineRef}
-          className="block w-8 h-0.5 bg-white rounded-full origin-center"
-        ></span>
-        <span
-          ref={bottomLineRef}
-          className="block w-8 h-0.5 bg-white rounded-full origin-center"
-        ></span>
+        <div className="flex flex-col gap-1">
+          <span
+            ref={topLineRef}
+            className="block w-8 h-0.5 bg-white rounded-full origin-center"
+          />
+          <span
+            ref={bottomLineRef}
+            className="block w-8 h-0.5 bg-white rounded-full origin-center"
+          />
+        </div>
       </div>
     </>
   );

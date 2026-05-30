@@ -11,7 +11,7 @@ Built for users.`;
   return (
     <section id="home" className="flex flex-col justify-end min-h-screen">
       <AnimatedHeaderSection
-        subTitle={"Dream. Code. Deploy. Repeat."}
+        subTitle={"You Dream It, I Code it."}
         title={"Arun Kumar HS"}
         text={text}
         textColor={"text-black"}

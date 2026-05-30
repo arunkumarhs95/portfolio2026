@@ -34,7 +34,7 @@ const Contact = () => {
     >
       <div>
         <AnimatedHeaderSection
-          subTitle={"You Dream It, I Code it"}
+          subTitle={"Dream. Code. Deploy. Repeat."}
           title={"Contact"}
           text={text}
           textColor={"text-white"}

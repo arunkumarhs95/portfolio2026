@@ -8,13 +8,12 @@ const About = () => {
   const text = `Passionate about clean architecture
     I build scalable, high-performance solutions
     from prototype to production`;
-  const aboutText = `I'm a Full Stack Developer passionate about building scalable, secure, and high-performance web applications using Java, Spring Boot, React.js, MySQL, and Microservices.
+  const aboutText = `I'm a Full Stack Developer who enjoys turning ideas into fast, scalable, and reliable digital experiences.
 
-I enjoy transforming complex business requirements into efficient software solutions that are reliable, maintainable, and built for growth. From designing responsive user interfaces to developing robust backend systems, I focus on delivering applications that provide real value to users and businesses.
+From crafting smooth user interfaces with React to building powerful backend systems with Java and Spring Boot, I focus on creating products that are not only functional but built to perform.
 
-My experience includes developing RESTful APIs, designing microservices-based architectures, optimizing database performance, and implementing modern development practices. I am committed to continuous learning and staying up to date with evolving technologies and industry best practices.
-
-Beyond development, I enjoy exploring new technologies, building personal projects, and expanding my expertise in software engineering and cloud-native applications.`;
+I believe great software is a balance of clean code, thoughtful design, and continuous innovation. Whether it's developing microservices, optimizing performance, or exploring new technologies, I'm always driven by the challenge of building something better than yesterday.
+`;
 
   const imgRef = useRef(null);
   useGSAP(() => {

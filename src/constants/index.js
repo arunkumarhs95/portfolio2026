@@ -84,9 +84,9 @@ id: 1,
 name: "F1 Movie Landing Page",
 description:
 "A modern and interactive movie landing page inspired by the F1 movie. Designed with smooth animations, responsive layouts, and engaging user experiences to showcase movie details, trailers, and promotional content.",
-href: "",
+href: "https://f1-website-sable-xi.vercel.app/",
 image: "/assets/projects/f1-movie.png",
-bgImage: "/assets/backgrounds/bg3.jpg",
+bgImage: "/assets/backgrounds/bg.jpg",
 frameworks: [
 { id: 1, name: "React.js" },
 { id: 2, name: "Tailwind CSS" },
@@ -101,7 +101,7 @@ description:
 "A complaint and issue management system that enables users to raise, track, and manage software bugs efficiently. Worked as a Frontend Developer, building responsive interfaces and integrating backend APIs for seamless user interactions.",
 href: "",
 image: "/assets/projects/ticketing-portal.png",
-bgImage: "/assets/backgrounds/bg4.jpg",
+bgImage: "/assets/backgrounds/bg.jpg",
 frameworks: [
 { id: 1, name: "React.js" },
 { id: 2, name: "Tailwind CSS" },
@@ -116,7 +116,7 @@ description:
 "A comprehensive HR management platform for employee records, attendance, leave management, and workforce administration. Contributed as a Frontend Developer, focusing on user-friendly interfaces and efficient state management.",
 href: "",
 image: "/assets/projects/hrms.png",
-bgImage: "/assets/backgrounds/bg5.jpg",
+bgImage: "/assets/backgrounds/bg.jpg",
 frameworks: [
 { id: 1, name: "React.js" },
 { id: 2, name: "Tailwind CSS" },
@@ -130,8 +130,8 @@ name: "Spotify Clone",
 description:
 "A full-stack music streaming application inspired by Spotify. Features user authentication, playlist management, music library browsing, favorites, search functionality, and secure access control. Implemented RESTful APIs, JWT-based authentication, role-based authorization, state management, and responsive UI design.",
 href: "",
-image: "/assets/projects/spotify-clone.png",
-bgImage: "/assets/backgrounds/bg1.jpg",
+image: "/assets/projects/spotify-clone.jpg",
+bgImage: "/assets/backgrounds/bg.jpg",
 frameworks: [
 { id: 1, name: "Java" },
 { id: 2, name: "Spring Boot" },
@@ -151,8 +151,8 @@ name: "E-Commerce Web Application",
 description:
 "A full-stack e-commerce platform featuring product catalog management, shopping cart functionality, user authentication, order management, and secure checkout workflows. Built with scalable backend architecture, REST APIs, JWT authentication, and responsive frontend design.",
 href: "",
-image: "/assets/projects/ecommerce.jpg",
-bgImage: "/assets/backgrounds/bg2.jpg",
+image: "/assets/projects/ecommerce.png",
+bgImage: "/assets/backgrounds/bg.jpg",
 frameworks: [
 { id: 1, name: "Java" },
 { id: 2, name: "Spring Boot" },
